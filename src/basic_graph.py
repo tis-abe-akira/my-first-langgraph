@@ -1,4 +1,5 @@
 from langgraph.graph import Graph
+from utils import save_mermaid_to_html
 
 def node_a(input):
     input += " a"
@@ -21,24 +22,4 @@ runner = graph.compile()
 mermaid_code = runner.get_graph().draw_mermaid()
 
 # Mermaid記法のGraph図をHTMLファイルに出力
-html_content = f"""
-<!DOCTYPE html>
-<html>
-<head>
-    <script type="module">
-        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
-        mermaid.initialize({{ startOnLoad: true }});
-    </script>
-</head>
-<body>
-    <div class="mermaid">
-        {mermaid_code}
-    </div>
-</body>
-</html>
-"""
-
-with open("graph.html", "w") as file:
-    file.write(html_content)
-
-print("Graph has been written to graph.html. Open this file in a web browser to view the graph.")
+save_mermaid_to_html(mermaid_code)
