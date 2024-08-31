@@ -22,4 +22,4 @@ runner = graph.compile()
 mermaid_code = runner.get_graph().draw_mermaid()
 
 # Mermaid記法のGraph図をHTMLファイルに出力
-save_mermaid_to_html(mermaid_code)
+save_mermaid_to_html(mermaid_code, "out/basic_graph.html")
